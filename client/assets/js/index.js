@@ -29,12 +29,12 @@ let activeNote = {};
 
 //this is our request for notes data -> routes to notes.js in api directory//
 const getNotes = () =>
-  fetch("/api/notes", {
+  fetch("./api/notes", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-  });
+  })
 
 const saveNote = (note) =>
   fetch("/api/notes", {
@@ -127,10 +127,12 @@ const handleRenderSaveBtn = () => {
   }
 };
 
-// Render the list of note titles
+// Render the list of note titles; awaiting the response from the server, which is sending back stored notes data via notes.json//
 const renderNoteList = async (notes) => {
   console.log("TEST");
+  console.log(notes)
   let jsonNotes = await notes.json();
+  console.log(jsonNotes) //receiving
   if (window.location.pathname === "/notes") {
     noteList.forEach((el) => (el.innerHTML = ""));
   }
@@ -169,8 +171,7 @@ const renderNoteList = async (notes) => {
   if (jsonNotes.length === 0) {
     noteListItems.push(createLi("No saved Notes", false));
   }
-
-  jsonNotes.forEach((note) => {
+  jsonNotes.forEach((note) => { 
     const li = createLi(note.title);
     li.dataset.note = JSON.stringify(note);
 
