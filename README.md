@@ -20,8 +20,6 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 ```
 GIVEN a note-taking application
-WHEN I click on the Save icon
-THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
 WHEN I click on an existing note in the list in the left-hand column
 THEN that note appears in the right-hand column
 WHEN I click on the Write icon in the navigation at the top of the page
@@ -39,8 +37,6 @@ The following images show the web application's appearance and functionality:
 
 
 ## Getting Started
-
-On the back end, the application should include a `db.json` file that will be used to store and retrieve notes using the `fs` module.
 
 The following HTML routes should be created:
 

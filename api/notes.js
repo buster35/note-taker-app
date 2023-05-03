@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid'); //npm package for unique id creation//
 const uuid = require("../helpers/uuid"); 
 const path = require("path");
 
-//TODO:find a way to add to notes.json without overwriting
+//TODO:.get route to display note on click event
 
 //If we've made it here, the route must have been /api/notes
 //Next Step: load up the json file, send that data back as the response
@@ -34,9 +34,7 @@ router.post("/", (req, res) => {
 
   notesArray.push(newNote)
   notesData = notesData.concat(notesArray)
-  console.log(notesData)
 
-  //TODO:write to notes.json without overwriting
   const readAndAppend = (notesData) => {
     fs.readFile(path.resolve(__dirname, "../db/notes.json"), "utf8", (err, data) => {
       if (err) {
@@ -56,10 +54,10 @@ router.post("/", (req, res) => {
     status: "success",
     body: newNote,
   }
-  console.log(response)
+
+  console.log(activeNote)
+
   res.status(201).json(response);
 })
-
-
 
 module.exports = router

@@ -98,7 +98,8 @@ const handleNoteDelete = (e) => {
   });
 };
 
-// Sets the activeNote and displays it
+// Sets the activeNote and displays it; event listener for left-hand sidebar
+//activeNote unique id used to fetch the requested note
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute("data-note"));
