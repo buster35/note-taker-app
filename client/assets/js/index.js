@@ -25,8 +25,6 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-//might need to add .then to the following two statements...
-
 //this is our request for notes data -> routes to notes.js in api directory//
 const getNotes = () =>
   fetch("./api/notes", {
@@ -120,7 +118,7 @@ const handleRenderSaveBtn = () => {
   }
 };
 
-// Render the list of note titles; awaiting the response from the server, which is sending back stored notes data via notes.json//
+// Render the list of note titles
 const renderNoteList = async (notes) => {
   console.log(notes)
   let jsonNotes = await notes.json();
@@ -187,4 +185,3 @@ if (window.location.pathname === "/notes") {
 
 getAndRenderNotes();
 //fires on notes.html page load; notes.html is loaded on click event by anchor tag in index.html//
-module.exports = activeNote;

@@ -5,9 +5,6 @@ const { v4: uuidv4 } = require('uuid'); //npm package for unique id creation//
 const uuid = require("../helpers/uuid"); 
 const path = require("path");
 
-
-//TODO:.get route to display note on click event
-
 //If we've made it here, the route must have been /api/notes
 //Next Step: load up the json file, send that data back as the response
 router.get("/", (req, res) => {
