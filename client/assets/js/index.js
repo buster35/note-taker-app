@@ -124,7 +124,7 @@ const handleRenderSaveBtn = () => {
 const renderNoteList = async (notes) => {
   console.log(notes)
   let jsonNotes = await notes.json();
-  console.log(jsonNotes) //receiving
+  console.log(jsonNotes)
   if (window.location.pathname === "/notes") {
     noteList.forEach((el) => (el.innerHTML = ""));
   }
@@ -187,3 +187,4 @@ if (window.location.pathname === "/notes") {
 
 getAndRenderNotes();
 //fires on notes.html page load; notes.html is loaded on click event by anchor tag in index.html//
+module.exports = activeNote;
