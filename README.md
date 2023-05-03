@@ -1,15 +1,10 @@
-# 11 Express.js: Note Taker
-
-## Your Task
-
-Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
+create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
 
 ### Technical Acceptance Criteria: 40%
 
 * Satisfies all of the preceding acceptance criteria plus the following:
 
   * Application must be deployed to Heroku.
-
 
 ### Deployment: 36%
 

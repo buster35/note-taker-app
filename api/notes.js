@@ -5,6 +5,8 @@ const { v4: uuidv4 } = require('uuid'); //npm package for unique id creation//
 const uuid = require("../helpers/uuid"); 
 const path = require("path");
 
+//TODO: deploy to Heroku
+//TODO: write README file
 //If we've made it here, the route must have been /api/notes
 //Next Step: load up the json file, send that data back as the response
 router.get("/", (req, res) => {
@@ -19,7 +21,7 @@ router.get("/", (req, res) => {
 })
 
 router.post("/", (req, res) => {
-  console.info(`${req.method} request received to store note`); //receiving
+  console.info(`${req.method} request received to store note`);
   const { title, text } = req.body
   
   const newNote = {
