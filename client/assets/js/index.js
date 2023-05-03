@@ -44,14 +44,6 @@ const saveNote = (note) =>
     },
     body: JSON.stringify(note), //this is the req.body
   })
-    .then((res) => res.json())
-    .then((res) => {
-      console.log("Successful POST:", res);
-      return res;
-    })
-    .catch((error) => {
-      console.error("Error in POST req:", error);
-    }); //working
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
@@ -129,7 +121,6 @@ const handleRenderSaveBtn = () => {
 
 // Render the list of note titles; awaiting the response from the server, which is sending back stored notes data via notes.json//
 const renderNoteList = async (notes) => {
-  console.log("TEST");
   console.log(notes)
   let jsonNotes = await notes.json();
   console.log(jsonNotes) //receiving

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const notesData = require("../db/notes.json");
+var notesData = require("../db/notes.json");
 const fs = require("fs");
 const { v4: uuidv4 } = require('uuid'); //npm package for unique id creation//
 const uuid = require("../helpers/uuid"); 
@@ -23,23 +23,34 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   console.info(`${req.method} request received to store note`); //receiving
   const { title, text } = req.body
+  
   const newNote = {
     title,
     text,
     notes_id: uuid(), 
   }
-  const noteString = JSON.stringify(newNote);
-  console.log(noteString) //receiving note w/ unique id in JSON
 
   let notesArray = []
 
-  notesArray.push(noteString)
+  notesArray.push(newNote)
+  notesData = notesData.concat(notesArray)
+  console.log(notesData)
 
-  console.log(notesArray)
   //TODO:write to notes.json without overwriting
-  fs.writeFile(path.resolve(__dirname, "../db/notes.json"), "utf8", (err, data) =>
-    err ? console.error(err) : console.log(`"${newNote.title}" note has been written to JSON database`)
-  );
+  const readAndAppend = (notesData) => {
+    fs.readFile(path.resolve(__dirname, "../db/notes.json"), "utf8", (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        fs.writeFile(path.resolve(__dirname, "../db/notes.json"), JSON.stringify(notesData), (err) =>
+        err ? console.error(err) : console.info(`\nData written to database`)
+        );  
+        return
+      }
+    })
+  }
+
+  readAndAppend(notesData)
 
   const response = {
     status: "success",
@@ -48,6 +59,7 @@ router.post("/", (req, res) => {
   console.log(response)
   res.status(201).json(response);
 })
+
 
 
 module.exports = router
